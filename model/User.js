@@ -1,6 +1,7 @@
 const axios = require('axios');
 const PouchDB = require('pouchdb');
 PouchDB.plugin(require('pouchdb-authentication'));
+require('dotenv').config();
 
 // Database
 var db = new PouchDB('http://admin:couchjj@localhost:5984', {
@@ -23,7 +24,7 @@ class User {
   }
 
   logIn() {
-    return axios.post('http://localhost:5984/_session', {
+    return axios.post(process.env.DB_SESSION, {
       name: this.username,
       password: this.password
     });
