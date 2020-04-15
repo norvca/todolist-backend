@@ -38,4 +38,9 @@ router.post('/login', async (req, res) => {
     });
 });
 
+// Change username
+router.post('/changeusername', async (req, res) => {
+  const { username, newusername } = req.body;
+});
+
 module.exports = router;

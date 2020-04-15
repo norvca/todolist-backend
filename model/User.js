@@ -29,6 +29,11 @@ class User {
       password: this.password
     });
   }
+
+  changeUsername() {
+    console.log(123);
+    // return db.changeUsername(username, newusername);
+  }
 }
 
 module.exports = User;

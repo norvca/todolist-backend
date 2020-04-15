@@ -6,6 +6,8 @@ const cors = require('cors');
 
 app.use(cors());
 
+const authRoute = require('./routes/auth');
+
 app.all('*', (req, res, next) => {
   let token = req.get('X-Auth-CouchDB-Token');
   let dbName = req.get('X-CouchDB-dbName');
@@ -19,5 +21,7 @@ app.all('*', (req, res, next) => {
 
   proxy.web(req, res);
 });
+
+app.use('/api/user', authRoute);
 
 app.listen(4000);
