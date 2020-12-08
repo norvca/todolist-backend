@@ -23,10 +23,8 @@ authRouter.post('/register', async (req, res) => {
 // Login
 authRouter.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = new User(username, password);
 
-  user
-    .logIn()
+  User.logIn(username, password)
     .then((response) => {
       const authToken = response.headers['set-cookie'][0];
       res

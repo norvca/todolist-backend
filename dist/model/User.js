@@ -27,10 +27,10 @@ class User {
             },
         });
     }
-    logIn() {
+    static logIn(name, password) {
         return axios_1.default.post(process.env.DB_SESSION, {
-            name: this.username,
-            password: this.password,
+            name,
+            password,
         });
     }
     changeUsername() {

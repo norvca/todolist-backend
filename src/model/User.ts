@@ -26,10 +26,10 @@ export class User {
     });
   }
 
-  logIn() {
+  static logIn(name: string, password: string) {
     return axios.post(process.env.DB_SESSION, {
-      name: this.username,
-      password: this.password,
+      name,
+      password,
     });
   }
 
