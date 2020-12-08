@@ -1,12 +1,14 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import PouchDB from 'pouchdb';
+import pouchAuth from 'pouchdb-authentication';
+import cookieParser from 'cookie-parser';
+
 const app = express();
-const dotenv = require('dotenv');
-const PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-authentication'));
-const cookieParser = require('cookie-parser');
+PouchDB.plugin(pouchAuth);
 
 // Routes
-const authRoute = require('./routes/auth');
+const { authRouter } = require('./routes/auth');
 // const httpProxy = require('./routes/httpProxy');
 dotenv.config();
 
@@ -24,6 +26,6 @@ app.use((req, res, next) => {
 });
 
 // Route Middleware
-app.use('/api/user', authRoute);
+app.use('/api/user', authRouter);
 
 app.listen(3000);
